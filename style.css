@@ -204,6 +204,108 @@ footer {
     font-size: 18px;
 }
 
+/* Calculator sectie */
+.calculator {
+    text-align: center;
+    padding: 20px;
+}
+
+.calc-container {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calc-buttons button {
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background: #555;
+    color: #fff;
+    cursor: pointer;
+}
+
+.calc-buttons button:hover {
+    background: #777;
+}
+
+.calc-buttons #display {
+    grid-column: span 4;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #333;
+    color: #fff;
+    font-size: 24px;
+    text-align: right;
+}
+
+/* Tic Tac Toe sectie */
+.tic-tac-toe {
+    text-align: center;
+    padding: 20px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: #333;
+    color: #fff;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background: #555;
+}
+
+.winning-message {
+    display: none;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.winning-message.show {
+    display: block;
+}
+
+#restartButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5733;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#restartButton:hover {
+    background: #e04e29;
+}
+
+
 /* Responsieve stijl */
 @media (max-width: 600px) {
     header {
