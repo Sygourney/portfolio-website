@@ -1,0 +1,234 @@
+/* Algemene stijl */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('images/background1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header stijl */
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 16px;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px; 
+}
+
+header nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Hero sectie */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p.hero-text {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* About sectie */
+.about {
+    text-align: center;
+    padding: 20px;
+}
+
+.about img.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px; 
+}
+
+/* Skills sectie */
+.skills {
+    padding: 20px;
+    text-align: center;
+}
+
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills ul li {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.skills ul li span {
+    display: block;
+    color: #ff5733; /* Kleur van programmeertalen */
+    font-size: 18px;
+}
+
+/* Contact sectie */
+.contact {
+    padding: 20px;
+    text-align: center;
+}
+
+.contact form {
+    display: inline-block;
+    max-width: 400px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contact .form-group {
+    margin-bottom: 15px;
+}
+
+.contact .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.contact .form-group input,
+.contact .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #555;
+    color: #fff;
+    font-size: 18px;
+}
+
+.contact button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #ff5733;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contact button:hover {
+    background: #e04e29;
+}
+
+/* Footer stijl */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: auto; 
+}
+
+/* Projecten sectie */
+.projects {
+    padding: 20px;
+    text-align: center;
+}
+
+.projects ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.projects ul li {
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.projects ul li img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.projects ul li span {
+    font-size: 18px;
+}
+
+/* Responsieve stijl */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    .hero p.hero-text {
+        font-size: 16px;
+    }
+
+    .projects ul li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .projects ul li img {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Nelis Sygourney Rodney</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="contact.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Nelis Sygourney Rodney</h1>
+        <h2>"Rising from the ashes, stronger than before."</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="over-mij.html">Over Mij</a></li>
+                <li><a href="programmeertalen.html">Programmeertalen</a></li>
+                <li><a href="projecten.html">Projecten</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact">
+            <h2>Contact</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Naam:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Bericht:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Verstuur</button>
+                <p id="successMessage" style="display: none;">Bedankt voor uw bericht! We nemen spoedig contact met u op.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nelis Sygourney Rodney</p>
+    </footer>
+</body>
+</html>

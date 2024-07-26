@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmeertalen - Nelis Sygourney Rodney</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Nelis Sygourney Rodney</h1>
+        <h2>"Rising from the ashes, stronger than before."</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="over-mij.html">Over Mij</a></li>
+                <li><a href="programmeertalen.html">Programmeertalen</a></li>
+                <li><a href="projecten.html">Projecten</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="skills">
+            <h2>Programmeertalen</h2>
+            <canvas id="skillsChart"></canvas>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nelis Sygourney Rodney</p>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        const skillsChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['JavaScript', 'Python', 'Java', 'C#', 'HTML/CSS', 'SQL', 'PHP', 'C++'],
+                datasets: [{
+                    label: 'Bekwaamheid (%)',
+                    data: [90, 85, 80, 75, 95, 70, 60, 65],
+                    backgroundColor: [
+                        '#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#A833FF', '#33FFF3', '#FF8A33', '#FF3333'
+                    ],
+                    borderColor: [
+                        '#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#A833FF', '#33FFF3', '#FF8A33', '#FF3333'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
