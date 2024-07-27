@@ -15,32 +15,12 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         return;
     }
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'send_mail.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            if (xhr.responseText === 'success') {
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('contactForm').reset();
-            } else {
-                alert('Er is een fout opgetreden bij het verzenden van het bericht: ' + xhr.responseText);
-            }
-        } else {
-            alert('Er is een netwerkfout opgetreden.');
-        }
-    };
-
-    xhr.onerror = function() {
-        alert('Er is een netwerkfout opgetreden.');
-    };
-
-    xhr.send(`name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`);
+    // Toon het succesbericht en verberg het formulier
+    document.getElementById('successMessage').style.display = 'block';
+    document.getElementById('contactForm').reset();
 });
 
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email.toLowerCase());
 }
-
