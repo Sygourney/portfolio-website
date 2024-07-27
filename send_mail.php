@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
@@ -6,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($name) && !empty($email) && !empty($message)) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $to = 'sygourneynelis@gmail.com'; 
+            $to = 'sygourneynelis@gmail.com'; // Jouw e-mailadres
             $subject = 'Nieuw bericht van het contactformulier';
             $headers = "From: $email\r\n";
             $headers .= "Reply-To: $email\r\n";
