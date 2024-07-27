@@ -1,63 +1,39 @@
-const display = document.getElementById('display');
-const buttons = document.querySelectorAll('button');
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-let displayValue = '';
-let firstValue = null;
-let secondValue = null;
-let currentOperation = null;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        const value = button.textContent;
-        const operation = button.dataset.operation;
-        const number = button.dataset.number;
+    if (!name || !email || !message) {
+        alert('Alle velden zijn verplicht.');
+        return;
+    }
 
-        if (number) {
-            displayValue += value;
-            display.value = displayValue;
-        } else if (operation) {
-            switch (operation) {
-                case 'clear':
-                    displayValue = '';
-                    firstValue = null;
-                    secondValue = null;
-                    currentOperation = null;
-                    display.value = displayValue;
-                    break;
-                case '=':
-                    if (firstValue !== null && currentOperation !== null) {
-                        secondValue = parseFloat(displayValue);
-                        const result = evaluate(firstValue, secondValue, currentOperation);
-                        displayValue = result.toString();
-                        display.value = displayValue;
-                        firstValue = result;
-                        secondValue = null;
-                        currentOperation = null;
-                    }
-                    break;
-                default:
-                    if (displayValue !== '') {
-                        firstValue = parseFloat(displayValue);
-                        currentOperation = operation;
-                        displayValue = '';
-                    }
-                    break;
-            }
+    if (!validateEmail(email)) {
+        alert('Voer een geldig emailadres in.');
+        return;
+    }
+
+    
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'send_mail.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function() {
+        if (xhr.status === 200 && xhr.responseText === 'success') {
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('contactForm').reset();
+        } else {
+            alert('Er is een fout opgetreden bij het verzenden van het bericht.');
         }
-    });
+    };
+
+    xhr.send(`name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`);
 });
 
-function evaluate(first, second, operation) {
-    switch (operation) {
-        case '+':
-            return first + second;
-        case '-':
-            return first - second;
-        case '*':
-            return first * second;
-        case '/':
-            return first / second;
-        default:
-            return 0;
-    }
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email.toLowerCase());
 }
+
