@@ -1,39 +1,45 @@
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('.calc-buttons button');
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const action = button.getAttribute('data-operation');
+            const number = button.getAttribute('data-number');
 
-    if (!name || !email || !message) {
-        alert('Alle velden zijn verplicht.');
-        return;
-    }
+            if (action) {
+                handleOperation(action);
+            } else if (number !== null) {
+                handleNumber(number);
+            }
+        });
+    });
 
-    if (!validateEmail(email)) {
-        alert('Voer een geldig emailadres in.');
-        return;
-    }
-
-    
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'send_mail.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-    xhr.onload = function() {
-        if (xhr.status === 200 && xhr.responseText === 'success') {
-            document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('contactForm').reset();
+    function handleNumber(number) {
+        if (display.value === '0' || display.value === 'Error') {
+            display.value = number;
         } else {
-            alert('Er is een fout opgetreden bij het verzenden van het bericht.');
+            display.value += number;
         }
-    };
+    }
 
-    xhr.send(`name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`);
+    function handleOperation(action) {
+        switch (action) {
+            case 'clear':
+                display.value = '0';
+                break;
+            case '=':
+                try {
+                    display.value = eval(display.value);
+                } catch {
+                    display.value = 'Error';
+                }
+                break;
+            default:
+                if (display.value !== 'Error') {
+                    display.value += action;
+                }
+                break;
+        }
+    }
 });
-
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email.toLowerCase());
-}
-
